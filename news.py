@@ -15,4 +15,13 @@ def get_market_news():
             if any(word in title for word in ["rise", "strong", "gain", "beat"]):
                 sentiment = "positive"
             elif any(word in title for word in ["fall", "weak", "drop", "miss"]):
-                sentiment = "
+                sentiment = "negative"
+            else:
+                sentiment = "neutral"
+                
+            news_list.append({
+                "title": entry.title,
+                "url": entry.link,
+                "sentiment": sentiment
+            })
+    return news_list[:3]
